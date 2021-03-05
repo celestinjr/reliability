@@ -1927,13 +1927,14 @@ class distribution_confidence_intervals:
             Z = -ss.norm.ppf((1 - CI) / 2)  # converts CI to Z
             if CI_100 % 1 == 0:
                 CI_100 = int(CI_100)  # removes decimals if the only decimal is 0
-            text_title = str(
-                text_title + "\n" + str(CI_100) + "% confidence bounds"
-            )  # Adds the CI and CI_type to the title
-            plt.title(
-                text_title
-            )  # add a line to the plot title to include the confidence bounds information
-            plt.subplots_adjust(top=0.81)
+            if plot_CI:
+                text_title = str(
+                    text_title + "\n" + str(CI_100) + "% confidence bounds"
+                )  # Adds the CI and CI_type to the title
+                plt.title(
+                    text_title
+                )  # add a line to the plot title to include the confidence bounds information
+                plt.subplots_adjust(top=0.81)
 
             Lambda_upper = self.Lambda * (np.exp(Z * (self.Lambda_SE / self.Lambda)))
             Lambda_lower = self.Lambda * (np.exp(-Z * (self.Lambda_SE / self.Lambda)))
@@ -2034,11 +2035,13 @@ class distribution_confidence_intervals:
             Z = -ss.norm.ppf((1 - CI) / 2)  # converts CI to Z
             if CI_100 % 1 == 0:
                 CI_100 = int(CI_100)  # removes decimals if the only decimal is 0
-            text_title = str(
-                text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
-            )  # Adds the CI and CI_type to the title
-            plt.title(text_title)
-            plt.subplots_adjust(top=0.81)
+
+            if plot_CI:
+                text_title = str(
+                    text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
+                )  # Adds the CI and CI_type to the title
+                plt.title(text_title)
+                plt.subplots_adjust(top=0.81)
 
             def u(t, alpha, beta):  # u = ln(-ln(R))
                 return beta * (anp.log(t) - anp.log(alpha))  # weibull SF linearized
@@ -2221,11 +2224,12 @@ class distribution_confidence_intervals:
             Z = -ss.norm.ppf((1 - CI) / 2)  # converts CI to Z
             if CI_100 % 1 == 0:
                 CI_100 = int(CI_100)  # removes decimals if the only decimal is 0
-            text_title = str(
-                text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
-            )  # Adds the CI and CI_type to the title
-            plt.title(text_title)
-            plt.subplots_adjust(top=0.81)
+            if plot_CI:
+                text_title = str(
+                    text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
+                )  # Adds the CI and CI_type to the title
+                plt.title(text_title)
+                plt.subplots_adjust(top=0.81)
 
             def u(t, alpha, beta):  # u = gammainccinv(beta,R)
                 return t / alpha
@@ -2408,11 +2412,12 @@ class distribution_confidence_intervals:
             Z = -ss.norm.ppf((1 - CI) / 2)  # converts CI to Z
             if CI_100 % 1 == 0:
                 CI_100 = int(CI_100)  # removes decimals if the only decimal is 0
-            text_title = str(
-                text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
-            )  # Adds the CI and CI_type to the title
-            plt.title(text_title)
-            plt.subplots_adjust(top=0.81)
+            if plot_CI:
+                text_title = str(
+                    text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
+                )  # Adds the CI and CI_type to the title
+                plt.title(text_title)
+                plt.subplots_adjust(top=0.81)
 
             def u(t, mu, sigma):  # u = phiinv(R)
                 return (mu - t) / sigma  # normal SF linearlized
@@ -2585,11 +2590,12 @@ class distribution_confidence_intervals:
             Z = -ss.norm.ppf((1 - CI) / 2)  # converts CI to Z
             if CI_100 % 1 == 0:
                 CI_100 = int(CI_100)  # removes decimals if the only decimal is 0
-            text_title = str(
-                text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
-            )  # Adds the CI and CI_type to the title
-            plt.title(text_title)
-            plt.subplots_adjust(top=0.81)
+            if plot_CI:
+                text_title = str(
+                    text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
+                )  # Adds the CI and CI_type to the title
+                plt.title(text_title)
+                plt.subplots_adjust(top=0.81)
 
             def u(t, mu, sigma):  # u = phiinv(R)
                 return (mu - np.log(t)) / sigma  # lognormal SF linearlized
@@ -2769,11 +2775,12 @@ class distribution_confidence_intervals:
             Z = -ss.norm.ppf((1 - CI) / 2)  # converts CI to Z
             if CI_100 % 1 == 0:
                 CI_100 = int(CI_100)  # removes decimals if the only decimal is 0
-            text_title = str(
-                text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
-            )  # Adds the CI and CI_type to the title
-            plt.title(text_title)
-            plt.subplots_adjust(top=0.81)
+            if plot_CI:
+                text_title = str(
+                    text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
+                )  # Adds the CI and CI_type to the title
+                plt.title(text_title)
+                plt.subplots_adjust(top=0.81)
 
             def u(t, alpha, beta):  # u = ln(1/R - 1)
                 return beta * (anp.log(t) - anp.log(alpha))  # loglogistic SF linearized
@@ -2956,11 +2963,12 @@ class distribution_confidence_intervals:
             Z = -ss.norm.ppf((1 - CI) / 2)  # converts CI to Z
             if CI_100 % 1 == 0:
                 CI_100 = int(CI_100)  # removes decimals if the only decimal is 0
-            text_title = str(
-                text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
-            )  # Adds the CI and CI_type to the title
-            plt.title(text_title)
-            plt.subplots_adjust(top=0.81)
+            if plot_CI:
+                text_title = str(
+                    text_title + "\n" + str(CI_100) + "% confidence bounds on " + CI_type
+                )  # Adds the CI and CI_type to the title
+                plt.title(text_title)
+                plt.subplots_adjust(top=0.81)
 
             def u(t, mu, sigma):  # u = ln(-ln(R))
                 return (t - mu) / sigma  # gumbel SF linearlized
